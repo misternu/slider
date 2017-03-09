@@ -24,7 +24,8 @@ describe View do
       expect{view.prompt_user}.to output(prompt).to_stdout
     end
     it 'retrieves the user input' do
-      expect(view.prompt_user).to eq '8'
+      allow(STDOUT).to receive(:puts)
+      expect(view.prompt_user).to eq "8"
     end
     it 'can use a custom prompt' do
       expect{view.prompt_user("foo")}.to output("foo\n").to_stdout
